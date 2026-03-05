@@ -29,58 +29,70 @@ const amenities = [
 ];
 
 const ImplantacaoSection = () => (
-  <section className="py-28 flex">
+  <section
+    className="section-transition py-16 md:py-28 flex justify-center"
+    data-observe="section"
+  >
+    <div className="flex flex-col md:flex-row items-start md:gap-24">
 
-    <div className="px-16 mt-28">
+      {/* IMAGEM */}
+      <div className="px-6 md:px-16 mt-10 md:mt-28 w-full">
 
-      <div className="mb-20">
-        <div className="inline-block bg-neutral-800 px-12 py-4">
-          <h2 className="text-white text-2xl tracking-[0.35em] uppercase font-light">
-            IMPLANTAÇÃO GERAL
-          </h2>
+        {/* TÍTULO */}
+        <div className="mb-10 md:mb-20 text-center md:text-left">
+          <div className="inline-block bg-neutral-800 px-6 md:px-12 py-3 md:py-4">
+            <h2 className="font-halyard text-white text-2xl md:text-4xl tracking-[0.25em] md:tracking-[0.35em] uppercase font-light">
+              IMPLANTAÇÃO GERAL
+            </h2>
+          </div>
+        </div>
+
+        {/* IMAGEM */}
+        <div className="flex justify-center">
+          <img
+            src={ImplementacaoBolotario}
+            alt="Implantação geral do empreendimento"
+            className="w-full max-w-[900px] h-auto"
+          />
         </div>
       </div>
 
-      <div className="flex">
-        <img
-          src={ImplementacaoBolotario}
-          alt="Implantação geral do empreendimento"
-          className="w-300 h-239 object-cover"
-        />
-      </div>
+      {/* LEGENDA */}
+      <div className="mt-12 md:mt-20 px-6 md:px-16 w-full">
 
-    </div>
+        <div className="max-w-[560px] mx-auto md:mx-0">
 
-    <div className="mt-20 px-16">
+          <div className="space-y-4 text-[13px] md:text-base leading-relaxed text-neutral-800 font-halyard">
 
-      <div className="max-w-[560px]">
-        <div className="space-y-4 text-[14px] leading-relaxed text-neutral-800">
+            {amenities.map((a) => (
+              <div key={a.num} className="flex">
+                <span className="min-w-[34px] md:min-w-[38px] font-semibold">
+                  {a.num} -
+                </span>
 
-          {amenities.map((a) => (
-            <div key={a.num} className="flex">
-              <span className="min-w-[38px] font-semibold">
-                {a.num} -
-              </span>
+                <span>
+                  <strong>{a.name}</strong>
 
-              <span>
-                <strong>{a.name}</strong>
-                {a.desc && (
-                  <>
-                    :{" "}
-                    <span className="text-neutral-600">
-                      {a.desc}
-                    </span>
-                  </>
-                )}
-              </span>
-            </div>
-          ))}
+                  {a.desc && (
+                    <>
+                      :{" "}
+                      <span className="text-neutral-600">
+                        {a.desc}
+                      </span>
+                    </>
+                  )}
+
+                </span>
+              </div>
+            ))}
+
+          </div>
 
         </div>
+
       </div>
 
     </div>
-
   </section>
 );
 

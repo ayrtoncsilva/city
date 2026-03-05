@@ -124,7 +124,10 @@ const GallerySection = () => {
   }, []);
 
   return (
-    <section className="bg-foreground py-0">
+    <section
+      className="section-transition bg-foreground py-0"
+      data-observe="section"
+    >
       <div className="relative w-full h-[60vh] md:h-[85vh] overflow-hidden">
         <img
           src={images[current].src}

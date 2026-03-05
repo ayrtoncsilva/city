@@ -16,15 +16,18 @@ const FooterSection = () => (
     className="py-16 md:py-20 px-6 md:px-12"
     style={{ backgroundColor: "#1A433A" }}
   >
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between gap-12">
+
       <div className="flex-shrink-0">
         <img
           src={logoRodape}
           alt="city URBANISMO"
-          className="h-370 md:h-350 w-259 object-contain"
+          className="h-[140px] md:h-[350px] w-auto object-contain"
         />
       </div>
-      <div className="grid grid-cols-2 gap-x-16 gap-y-6">
+
+      {/* redes apenas desktop */}
+      <div className="hidden md:grid grid-cols-2 gap-x-16 gap-y-6">
         {socialLinks.map(({ href, icon, label, text }) => (
           <a
             key={label}
@@ -32,12 +35,13 @@ const FooterSection = () => (
             className="flex items-center gap-3 text-white hover:text-white/90 transition-colors"
           >
             <span className="flex items-center justify-center rounded-full bg-white/20 shrink-0">
-              <img src={icon} alt={label} className="w-29 h-29" />
+              <img src={icon} alt={label} className="w-7 h-7" />
             </span>
             <span className="font-body text-sm">{text}</span>
           </a>
         ))}
       </div>
+
     </div>
   </footer>
 );
