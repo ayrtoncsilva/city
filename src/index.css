@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600&family=Syne:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Halyard Text: fonte comercial. Fallback Source Serif 4 até adicionar arquivos da Halyard. */
+/* Rolide: para usar a fonte Rolide, baixe em fontspace.com/rolide-font-f107086 ou befonts.com e coloque em public/fonts */
+@font-face {
+  font-family: 'Rolide';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Rolide.woff2') format('woff2'), url('/fonts/Rolide.woff') format('woff'), url('/fonts/Rolide.ttf') format('truetype');
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 180 10% 15%;
+
+    --card: 36 15% 92%;
+    --card-foreground: 180 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 10% 15%;
+
+    --primary: 36 40% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 15% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 36 10% 90%;
+    --muted-foreground: 180 5% 45%;
+
+    --accent: 33 80% 55%;
+    --accent-foreground: 180 10% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 15% 85%;
+    --input: 36 15% 85%;
+    --ring: 36 40% 45%;
+
+    --radius: 0.25rem;
+
+    --city-dark: 180 20% 16%;
+    --city-warm: 36 20% 42%;
+    --city-cream: 40 20% 95%;
+    --city-gold: 33 80% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 180 20% 10%;
+    --foreground: 0 0% 95%;
+    --card: 180 15% 14%;
+    --card-foreground: 0 0% 95%;
+    --popover: 180 15% 14%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 36 40% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 10% 25%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 180 10% 20%;
+    --muted-foreground: 36 10% 65%;
+    --accent: 33 80% 55%;
+    --accent-foreground: 180 10% 15%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 180 10% 22%;
+    --input: 180 10% 22%;
+    --ring: 36 40% 45%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
