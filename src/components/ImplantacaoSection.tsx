@@ -1,4 +1,5 @@
 import ImplementacaoBolotario from "../assets/ImplementacaoBolotario.png";
+import ImplementacaoMobile from "../assets/implantacaoMobile.png";
 
 const amenities = [
   { num: 1, name: "ÁREA COMERCIAL" },
@@ -15,7 +16,7 @@ const amenities = [
   { num: 12, name: "QUADRA SOCIETY", desc: "campo com dimensões oficiais de futebol society" },
   { num: 13, name: "QUADRA POLIESPORTIVA", desc: "quadra com dimensões oficiais para vôlei, handebol e basquete" },
   { num: 14, name: "ESPAÇO GOURMET 2", desc: "climatizado e equipado para confraternizações" },
-  { num: 15, name: "QUADRAS BEACH TENNIS", desc: "3 quadras de areia descobertas com medidas oficiais" },
+  { num: 15, name: "QUADRAS BEACH TENNIS", desc: "3 quadras de areia descobertas com medidas oficiais para beach tennis e futevôlei" },
   { num: 16, name: "PET PLACE", desc: "área dedicada ao lazer e cuidados com pets" },
   { num: 17, name: "FUTMESA", desc: "3 futmesas espalhadas pelo complexo para diversão" },
   { num: 18, name: "FORTE APACHE", desc: "playground temático com pomar adjacente" },
@@ -30,66 +31,79 @@ const amenities = [
 
 const ImplantacaoSection = () => (
   <section
-    className="section-transition py-16 md:py-28 flex justify-center"
+    className="section-transition py-16 md:py-28"
     data-observe="section"
   >
-    <div className="flex flex-col md:flex-row items-start md:gap-24">
+    {/* ── MOBILE ── */}
+    <div className="md:hidden flex flex-col">
+      {/* Título */}
+      <div className="mb-8 px-6 flex justify-center">
+        <div className="inline-block bg-neutral-800 px-6 py-3">
+          <h2 className="font-halyard text-white text-2xl tracking-[0.25em] uppercase font-light">
+            IMPLANTAÇÃO GERAL
+          </h2>
+        </div>
+      </div>
 
-      {/* IMAGEM */}
-      <div className="px-6 md:px-16 mt-10 md:mt-28 w-full">
+      {/* Mapa mobile — imagem dedicada, largura total */}
+      <img
+        src={ImplementacaoMobile}
+        alt="Implantação geral do empreendimento"
+        className="w-full h-auto"
+      />
 
-        {/* TÍTULO */}
-        <div className="mb-10 md:mb-20 text-center md:text-left">
-          <div className="inline-block bg-neutral-800 px-6 md:px-12 py-3 md:py-4">
-            <h2 className="font-halyard text-white text-2xl md:text-4xl tracking-[0.25em] md:tracking-[0.35em] uppercase font-light">
+      {/* Legenda mobile */}
+      <div className="mt-8 px-6">
+        <div className="space-y-3 text-[12px] leading-relaxed text-neutral-800 font-halyard">
+          {amenities.map((a) => (
+            <div key={a.num} className="flex">
+              <span className="min-w-[28px] font-semibold shrink-0">{a.num} -</span>
+              <span>
+                <strong>{a.name}</strong>
+                {a.desc && (
+                  <>: <span className="text-neutral-600">{a.desc}</span></>
+                )}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* ── DESKTOP ── */}
+    <div className="hidden md:flex flex-row items-start">
+
+      {/* Coluna esquerda — título + mapa */}
+      <div className="w-[60%] pl-16 pr-8">
+        <div className="mb-12 text-left">
+          <div className="inline-block bg-neutral-800 px-10 py-4">
+            <h2 className="font-halyard text-white text-4xl tracking-[0.35em] uppercase font-light">
               IMPLANTAÇÃO GERAL
             </h2>
           </div>
         </div>
-
-        {/* IMAGEM */}
-        <div className="flex justify-center">
-          <img
-            src={ImplementacaoBolotario}
-            alt="Implantação geral do empreendimento"
-            className="w-full max-w-[900px] h-auto"
-          />
-        </div>
+        <img
+          src={ImplementacaoBolotario}
+          alt="Implantação geral do empreendimento"
+          className="w-full h-auto"
+        />
       </div>
 
-      {/* LEGENDA */}
-      <div className="mt-12 md:mt-20 px-6 md:px-16 w-full">
-
-        <div className="max-w-[560px] mx-auto md:mx-0">
-
-          <div className="space-y-4 text-[13px] md:text-base leading-relaxed text-neutral-800 font-halyard">
-
-            {amenities.map((a) => (
-              <div key={a.num} className="flex">
-                <span className="min-w-[34px] md:min-w-[38px] font-semibold">
-                  {a.num} -
-                </span>
-
-                <span>
-                  <strong>{a.name}</strong>
-
-                  {a.desc && (
-                    <>
-                      :{" "}
-                      <span className="text-neutral-600">
-                        {a.desc}
-                      </span>
-                    </>
-                  )}
-
-                </span>
-              </div>
-            ))}
-
-          </div>
-
+      {/* Coluna direita — legenda */}
+      <div className="w-[40%] mt-28 pl-8 pr-16">
+        <div className="space-y-3 text-[13px] leading-relaxed text-neutral-800 font-halyard">
+          {amenities.map((a) => (
+            <div key={a.num} className="flex">
+              <span className="min-w-[34px] font-semibold shrink-0">{a.num} -</span>
+              <span>
+                <strong>{a.name}</strong>
+                {a.desc && (
+                  <>: <span className="text-neutral-600">{a.desc}</span></>
+                )}
+              </span>
+            </div>
+          ))}
         </div>
-
       </div>
 
     </div>

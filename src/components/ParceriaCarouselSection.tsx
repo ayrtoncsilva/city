@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import restaurantImg from "@/assets/restaurant.jpg";
 import interior from "@/assets/img4.png";
 import cityUrbanismo from "@/assets/City_Urbanismo_Logo.png";
@@ -7,12 +7,9 @@ import leoMaia from "@/assets/img1.png";
 import yaraImg from "@/assets/yara.png";
 import partner1 from "@/assets/img2.png";
 import partnersBg from "@/assets/Rectangle 3.png";
-
 import imgMobMaia from "@/assets/img-mob-maia.png";
 import imgYaraMobile from "@/assets/img-yara-mobile.png";
-
 import yaraLogo from "@/assets/logo-yara.png";
-
 import {
   Carousel,
   CarouselContent,
@@ -52,15 +49,7 @@ const ParceriaCarouselSection = ({
 }) => {
   const [api, setApi] = useState<CarouselApi | undefined>(undefined);
 
-  useEffect(() => {
-    if (!api) return;
-
-    const interval = setInterval(() => {
-      api.scrollNext();
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, [api]);
+  // Sem autoplay — apenas setas controlam o carousel
 
   return (
     <section
@@ -72,41 +61,32 @@ const ParceriaCarouselSection = ({
 
         {/* MOBILE HEADER */}
         <div className="md:hidden mb-12">
-
           <div className="grid grid-cols-2 gap-6 mb-8">
             <img src={partnersBg} className="w-full object-cover" />
             <img src={partner1} className="w-full object-cover" />
           </div>
-
           <div className="grid grid-cols-2 gap-6 mb-8 items-center">
             <img src={cityUrbanismo} className="w-full object-contain" />
             <img src={prnbUrbanismo} className="w-full object-contain" />
           </div>
-
-          <p className="text-white text-sm leading-relaxed text-center">
+          <p className="text-white text-sm leading-relaxed text-center mx-auto max-w-[320px]">
             Quando PRNB Urbanismo e City Urbanismo unem suas trajetórias,
             nasce um novo padrão de excelência em incorporação.
           </p>
-
         </div>
 
         {/* DESKTOP BLOCO ORIGINAL */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 md:gap-40 gap-24 mb-24 items-start">
-
           <div className="flex flex-col gap-24">
-
             <div className="grid grid-cols-2 gap-24">
               <img src={partnersBg} className="w-full object-cover" />
               <img src={partner1} className="w-full object-cover" />
             </div>
-
             <div className="grid grid-cols-2 gap-24">
               <img src={cityUrbanismo} className="w-full max-w-[300px] object-contain" />
               <img src={prnbUrbanismo} className="w-full max-w-[300px] object-contain" />
             </div>
-
           </div>
-
           <div className="flex items-start justify-center">
             <p className="font-halyard text-white text-xl leading-relaxed max-w-[520px]">
               Quando PRNB Urbanismo e City Urbanismo unem suas trajetórias,
@@ -115,7 +95,6 @@ const ParceriaCarouselSection = ({
               novas possibilidades.
             </p>
           </div>
-
         </div>
 
         {/* MOBILE CAROUSEL */}
@@ -131,7 +110,7 @@ const ParceriaCarouselSection = ({
           </Carousel>
         </div>
 
-        {/* DESKTOP CAROUSEL ORIGINAL */}
+        {/* DESKTOP CAROUSEL */}
         <div className="hidden md:block">
           <Carousel
             opts={{ align: "start", loop: true }}
@@ -139,12 +118,11 @@ const ParceriaCarouselSection = ({
             className="w-full"
           >
             <CarouselContent>
-
               {slides.map((slide, index) => (
                 <CarouselItem key={index}>
-
                   <div className="grid grid-cols-[1.8fr_120px_0.9fr] gap-12 items-end">
 
+                    {/* Imagem principal */}
                     <div className="aspect-[16/9] overflow-hidden">
                       <img
                         src={slide.mainImage}
@@ -152,62 +130,55 @@ const ParceriaCarouselSection = ({
                       />
                     </div>
 
+                    {/* Botões de navegação */}
                     <div className="flex flex-col justify-end items-center">
                       <div className="flex gap-4 mb-2">
-
                         <button
                           onClick={() => api?.scrollPrev()}
-                          className="w-[64px] h-[64px] rounded-full border border-white text-white"
+                          className="w-[64px] h-[64px] rounded-full border border-white text-white text-2xl hover:bg-white/10 transition-colors"
                         >
                           ‹
                         </button>
-
                         <button
                           onClick={() => api?.scrollNext()}
-                          className="w-[64px] h-[64px] rounded-full border border-white text-white"
+                          className="w-[64px] h-[64px] rounded-full border border-white text-white text-2xl hover:bg-white/10 transition-colors"
                         >
                           ›
                         </button>
-
                       </div>
                     </div>
 
-                    <div className="flex flex-col pl-12 -mt-32">
-
-                      <div className="flex flex-col mb-4 items-center">
-
-                        <span className="font-rolide text-white/80 text-xl tracking-[0.25em] mb-4">
+                    {/* Coluna direita: label + nome/logo + foto pessoa */}
+                    <div className="flex flex-col pl-12">
+                      {/* Label e nome/logo — menores e alinhados à esquerda */}
+                      <div className="flex flex-col items-start mb-4">
+                        <span className="font-rolide text-white/70 text-xs tracking-[0.2em] uppercase mb-2">
                           {slide.label}
                         </span>
-
                         {slide.name && (
-                          <span className="text-white text-[56px] tracking-[0.35em] mb-6">
+                          <span className="text-white text-2xl tracking-[0.3em] mb-4">
                             {slide.name}
                           </span>
                         )}
-
                         {slide.logo && (
-                          <img src={slide.logo} className="h-[70px] mb-6" />
+                          <img src={slide.logo} className="h-[40px] mb-4 object-contain" />
                         )}
-
                       </div>
 
+                      {/* Foto da pessoa — menor e bem enquadrada */}
                       {slide.personImage && (
-                        <div className="w-[520px] aspect-square overflow-hidden">
+                        <div className="w-[200px] h-[200px] overflow-hidden">
                           <img
                             src={slide.personImage}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-top"
                           />
                         </div>
                       )}
-
                     </div>
 
                   </div>
-
                 </CarouselItem>
               ))}
-
             </CarouselContent>
           </Carousel>
         </div>
