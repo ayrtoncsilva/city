@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-
 import ctUrbG357FotomontagemR03 from "@/assets/CT - URB_G3_57_FOTOMONTAGEM_R03.webp";
 import ctUrbG101AcessoPrincipalR03 from "@/assets/CT-URB_G1_01_ACESSO PRINCIPAL_R03.webp";
 import ctUrbG102AcessoPrincipalR03 from "@/assets/CT-URB_G1_02_ACESSO_PRINCIPAL_R03.webp";
@@ -118,8 +116,7 @@ const GallerySection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000);
-
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
@@ -136,10 +133,20 @@ const GallerySection = () => {
           loading="lazy"
         />
 
-        <div className="absolute bottom-8 right-8 text-white font-display text-xl tracking-widest">
+        {/* LABEL DESKTOP — canto inferior direito, grande */}
+        <div
+          className="hidden md:block absolute bottom-8 right-8 text-white font-rolide tracking-widest"
+          style={{ fontSize: "32px" }}
+        >
           {images[current].label}
         </div>
 
+        {/* LABEL MOBILE — canto superior direito, menor */}
+        <div className="md:hidden absolute top-4 right-4 text-white font-rolide tracking-widest text-base">
+          {images[current].label}
+        </div>
+
+        {/* DOTS */}
         <div className="absolute bottom-8 left-8 flex items-center gap-2">
           {images.map((_, i) => (
             <button
@@ -152,19 +159,15 @@ const GallerySection = () => {
           ))}
         </div>
 
+        {/* SETAS */}
         <button
-          onClick={() =>
-            setCurrent((c) => (c - 1 + images.length) % images.length)
-          }
+          onClick={() => setCurrent((c) => (c - 1 + images.length) % images.length)}
           className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"
         >
           <ChevronLeft size={40} />
         </button>
-
         <button
-          onClick={() =>
-            setCurrent((c) => (c + 1) % images.length)
-          }
+          onClick={() => setCurrent((c) => (c + 1) % images.length)}
           className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"
         >
           <ChevronRight size={40} />

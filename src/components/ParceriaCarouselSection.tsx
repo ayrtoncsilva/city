@@ -16,7 +16,6 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-
 export type CarouselSlide = {
   mainImage: string;
   label: string;
@@ -24,7 +23,6 @@ export type CarouselSlide = {
   logo?: string;
   personImage?: string;
 };
-
 const defaultSlides: CarouselSlide[] = [
   {
     mainImage: restaurantImg,
@@ -39,18 +37,13 @@ const defaultSlides: CarouselSlide[] = [
     personImage: yaraImg,
   },
 ];
-
 const mobileSlides = [imgMobMaia, imgYaraMobile];
-
 const ParceriaCarouselSection = ({
   slides = defaultSlides,
 }: {
   slides?: CarouselSlide[];
 }) => {
   const [api, setApi] = useState<CarouselApi | undefined>(undefined);
-
-  // Sem autoplay — apenas setas controlam o carousel
-
   return (
     <section
       className="section-transition pt-20 md:pt-40 pb-16 md:pb-24"
@@ -58,7 +51,6 @@ const ParceriaCarouselSection = ({
       data-observe="section"
     >
       <div className="pl-6 md:pl-20 pr-6 md:pr-10">
-
         {/* MOBILE HEADER */}
         <div className="md:hidden mb-12">
           <div className="grid grid-cols-2 gap-6 mb-8">
@@ -74,7 +66,6 @@ const ParceriaCarouselSection = ({
             nasce um novo padrão de excelência em incorporação.
           </p>
         </div>
-
         {/* DESKTOP BLOCO ORIGINAL */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 md:gap-40 gap-24 mb-24 items-start">
           <div className="flex flex-col gap-24">
@@ -96,7 +87,6 @@ const ParceriaCarouselSection = ({
             </p>
           </div>
         </div>
-
         {/* MOBILE CAROUSEL */}
         <div className="md:hidden mb-10">
           <Carousel opts={{ align: "start", loop: true }} setApi={setApi}>
@@ -109,7 +99,6 @@ const ParceriaCarouselSection = ({
             </CarouselContent>
           </Carousel>
         </div>
-
         {/* DESKTOP CAROUSEL */}
         <div className="hidden md:block">
           <Carousel
@@ -120,8 +109,7 @@ const ParceriaCarouselSection = ({
             <CarouselContent>
               {slides.map((slide, index) => (
                 <CarouselItem key={index}>
-                  <div className="grid grid-cols-[1.8fr_120px_0.9fr] gap-12 items-end">
-
+                  <div className="grid grid-cols-[1.8fr_0.9fr] gap-12">
                     {/* Imagem principal */}
                     <div className="aspect-[16/9] overflow-hidden">
                       <img
@@ -129,63 +117,55 @@ const ParceriaCarouselSection = ({
                         className="w-full h-full object-cover"
                       />
                     </div>
-
-                    {/* Botões de navegação */}
-                    <div className="flex flex-col justify-end items-center">
-                      <div className="flex gap-4 mb-2">
+                    {/* Coluna direita: flex col, conteúdo empurrado para baixo */}
+                    <div className="flex flex-col justify-end items-center pl-12">
+                      {/* Título alinhado junto à borda da foto */}
+                      <div className="flex flex-col items-center mb-5 w-full mr-28">
+                        <span className="font-rolide text-white/70 text-xs tracking-[0.2em] uppercase mb-1">
+                          {slide.label}
+                        </span>
+                        {slide.name && (
+                          <span className="text-white text-2xl tracking-[0.3em]">
+                            {slide.name}
+                          </span>
+                        )}
+                        {slide.logo && (
+                          <img src={slide.logo} className="h-[40px] object-contain" />
+                        )}
+                      </div>
+                      {/* Foto */}
+                      {slide.personImage && (
+                        <div className="overflow-hidden w-full">
+                          <img
+                            src={slide.personImage}
+                            className="w-200 object-cover object-top"
+                          />
+                        </div>
+                      )}
+                      {/* Setas com espaço abaixo da foto */}
+                      <div className="flex gap-2 mt-6 w-full">
                         <button
                           onClick={() => api?.scrollPrev()}
-                          className="w-[64px] h-[64px] rounded-full border border-white text-white text-2xl hover:bg-white/10 transition-colors"
+                          className="w-[36px] h-[36px] rounded-full border border-white text-white text-lg hover:bg-white/10 transition-colors flex items-center justify-center"
                         >
                           ‹
                         </button>
                         <button
                           onClick={() => api?.scrollNext()}
-                          className="w-[64px] h-[64px] rounded-full border border-white text-white text-2xl hover:bg-white/10 transition-colors"
+                          className="w-[36px] h-[36px] rounded-full border border-white text-white text-lg hover:bg-white/10 transition-colors flex items-center justify-center"
                         >
                           ›
                         </button>
                       </div>
                     </div>
-
-                    {/* Coluna direita: label + nome/logo + foto pessoa */}
-                    <div className="flex flex-col pl-12">
-                      {/* Label e nome/logo — menores e alinhados à esquerda */}
-                      <div className="flex flex-col items-start mb-4">
-                        <span className="font-rolide text-white/70 text-xs tracking-[0.2em] uppercase mb-2">
-                          {slide.label}
-                        </span>
-                        {slide.name && (
-                          <span className="text-white text-2xl tracking-[0.3em] mb-4">
-                            {slide.name}
-                          </span>
-                        )}
-                        {slide.logo && (
-                          <img src={slide.logo} className="h-[40px] mb-4 object-contain" />
-                        )}
-                      </div>
-
-                      {/* Foto da pessoa — menor e bem enquadrada */}
-                      {slide.personImage && (
-                        <div className="w-[200px] h-[200px] overflow-hidden">
-                          <img
-                            src={slide.personImage}
-                            className="w-full h-full object-cover object-top"
-                          />
-                        </div>
-                      )}
-                    </div>
-
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
         </div>
-
       </div>
     </section>
   );
 };
-
 export default ParceriaCarouselSection;

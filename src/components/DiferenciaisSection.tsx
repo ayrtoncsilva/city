@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import leafBg from "@/assets/Textura+Logo 1.png";
 import arrowImg from "@/assets/arrow.png";
 import {
@@ -46,9 +46,8 @@ const slides: DiferencialSlide[] = [
 ];
 
 const DiferenciaisSection = () => {
-  const [api, setApi] = useState<CarouselApi | undefined>(undefined);
-
-  // Sem autoplay — só ao clicar na seta
+  const [desktopApi, setDesktopApi] = useState<CarouselApi | undefined>(undefined);
+  const [mobileApi, setMobileApi] = useState<CarouselApi | undefined>(undefined);
 
   return (
     <section
@@ -61,12 +60,11 @@ const DiferenciaisSection = () => {
 
       {/* ── DESKTOP ── */}
       <div className="hidden md:flex relative z-10 items-center justify-center min-h-[420px] px-20 py-24">
-        {/* Conteúdo deslocado para a direita — logo já está na imagem de fundo à esquerda */}
         <div className="w-full max-w-5xl flex justify-end">
           <div className="w-full max-w-xl text-left">
             <Carousel
               opts={{ align: "start", loop: true }}
-              setApi={setApi}
+              setApi={setDesktopApi}
               className="w-full"
             >
               <CarouselContent>
@@ -93,13 +91,22 @@ const DiferenciaisSection = () => {
             </Carousel>
           </div>
         </div>
+
+        {/* Botão seta — desktop */}
+        <button
+          type="button"
+          onClick={() => desktopApi?.scrollNext()}
+          className="absolute bottom-10 right-10 h-[54px] w-[106px] rounded-full border border-white flex items-center justify-center hover:bg-white/10 transition"
+        >
+          <img src={arrowImg} alt="próximo" className="h-2 object-contain" />
+        </button>
       </div>
 
       {/* ── MOBILE ── */}
       <div className="md:hidden relative z-10 px-6 pt-12 pb-20 min-h-[320px]">
         <Carousel
           opts={{ align: "start", loop: true }}
-          setApi={setApi}
+          setApi={setMobileApi}
           className="w-full"
         >
           <CarouselContent>
@@ -124,16 +131,16 @@ const DiferenciaisSection = () => {
             ))}
           </CarouselContent>
         </Carousel>
-      </div>
 
-      {/* BOTÃO SETA — posição absoluta, igual ao modelo */}
-      <button
-        type="button"
-        onClick={() => api?.scrollNext()}
-        className="absolute bottom-8 right-8 md:bottom-10 md:right-10 h-[48px] w-[96px] md:h-[54px] md:w-[106px] rounded-full border border-white flex items-center justify-center hover:bg-white/10 transition"
-      >
-        <img src={arrowImg} alt="próximo" className="h-5 md:h-6 object-contain" />
-      </button>
+        {/* Botão seta — mobile */}
+        <button
+          type="button"
+          onClick={() => mobileApi?.scrollNext()}
+          className="absolute bottom-8 right-8 h-[48px] w-[96px] rounded-full border border-white flex items-center justify-center hover:bg-white/10 transition"
+        >
+          <img src={arrowImg} alt="próximo" className="h-2 object-contain" />
+        </button>
+      </div>
     </section>
   );
 };
