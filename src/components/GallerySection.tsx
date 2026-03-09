@@ -133,9 +133,9 @@ const GallerySection = () => {
           loading="lazy"
         />
 
-        {/* LABEL DESKTOP — canto inferior direito, grande */}
+        {/* LABEL DESKTOP — canto superior direito, grande */}
         <div
-          className="hidden md:block absolute bottom-8 right-8 text-white font-rolide tracking-widest"
+          className="hidden md:block absolute top-8 right-8 text-white font-rolide tracking-widest"
           style={{ fontSize: "32px" }}
         >
           {images[current].label}
