@@ -1,5 +1,5 @@
 import ImplementacaoBolotario from "../assets/ImplementacaoBolotario.png";
-import ImplementacaoMobile from "../assets/implantacaoMobile.png";
+import ImplantacaoMobile from "../assets/implantacaoMobile.png";
 
 const amenities = [
   { num: 1, name: "ÁREA COMERCIAL" },
@@ -30,12 +30,11 @@ const amenities = [
 ];
 
 const ImplantacaoSection = () => (
-  <section
-    className="section-transition py-16 md:py-28"
-    data-observe="section"
-  >
-    {/* ── MOBILE ── */}
+  <section className="section-transition py-16 md:py-28" data-observe="section">
+
+    {/* MOBILE */}
     <div className="md:hidden flex flex-col">
+
       {/* Título */}
       <div className="mb-8 px-6 flex justify-center">
         <div className="inline-block bg-neutral-800 px-6 py-3">
@@ -45,9 +44,9 @@ const ImplantacaoSection = () => (
         </div>
       </div>
 
-      {/* Mapa mobile — imagem dedicada, largura total */}
+      {/* Mapa mobile */}
       <img
-        src={ImplementacaoMobile}
+        src={ImplantacaoMobile}
         alt="Implantação geral do empreendimento"
         className="w-full h-auto"
       />
@@ -60,21 +59,21 @@ const ImplantacaoSection = () => (
               <span className="min-w-[28px] font-semibold shrink-0">{a.num} -</span>
               <span>
                 <strong>{a.name}</strong>
-                {a.desc && (
-                  <>: <span className="text-neutral-600">{a.desc}</span></>
-                )}
+                {a.desc && <>: <span className="text-neutral-600">{a.desc}</span></>}
               </span>
             </div>
           ))}
         </div>
       </div>
+
     </div>
 
-    {/* ── DESKTOP ── */}
+    {/* DESKTOP */}
     <div className="hidden md:flex flex-row items-start">
 
-      {/* Coluna esquerda — título + mapa */}
+      {/* esquerda */}
       <div className="w-[60%] pl-16 pr-8">
+
         <div className="mb-12 text-left">
           <div className="inline-block bg-neutral-800 px-10 py-4">
             <h2 className="font-halyard text-white text-4xl tracking-[0.35em] uppercase font-light">
@@ -82,31 +81,34 @@ const ImplantacaoSection = () => (
             </h2>
           </div>
         </div>
+
         <img
           src={ImplementacaoBolotario}
           alt="Implantação geral do empreendimento"
           className="w-full h-auto"
         />
+
       </div>
 
-      {/* Coluna direita — legenda */}
+      {/* direita */}
       <div className="w-[40%] mt-28 pl-8 pr-16">
+
         <div className="space-y-3 text-[13px] leading-relaxed text-neutral-800 font-halyard">
           {amenities.map((a) => (
             <div key={a.num} className="flex">
               <span className="min-w-[34px] font-semibold shrink-0">{a.num} -</span>
               <span>
                 <strong>{a.name}</strong>
-                {a.desc && (
-                  <>: <span className="text-neutral-600">{a.desc}</span></>
-                )}
+                {a.desc && <>: <span className="text-neutral-600">{a.desc}</span></>}
               </span>
             </div>
           ))}
         </div>
+
       </div>
 
     </div>
+
   </section>
 );
 
