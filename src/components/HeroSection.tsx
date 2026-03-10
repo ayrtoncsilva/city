@@ -56,7 +56,12 @@ const HeroSection = () => {
               <div className="w-full h-px bg-white/50" />
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+            {/* id="conversion-form" é obrigatório para MtnStudio.sendLead('conversion-form') */}
+            <form
+              id="conversion-form"
+              onSubmit={handleSubmit}
+              className="space-y-5 md:space-y-6"
+            >
               <input
                 type="text"
                 name="nome"
@@ -64,6 +69,7 @@ const HeroSection = () => {
                 value={formData.nome}
                 onChange={handleChange}
                 required
+                {...{ "mtn-capture": "", "mtn-field": "Name" }}
                 className="w-full bg-transparent border border-white/50 text-white placeholder:text-white/70 px-4 py-3 md:px-5 md:py-4 text-sm md:text-lg font-halyard focus:outline-none focus:border-white transition-colors"
               />
               <input
@@ -73,6 +79,7 @@ const HeroSection = () => {
                 value={formData.celular}
                 onChange={handleChange}
                 required
+                {...{ "mtn-capture": "", "mtn-field": "Phone" }}
                 className="w-full bg-transparent border border-white/50 text-white placeholder:text-white/70 px-4 py-3 md:px-5 md:py-4 text-sm md:text-base font-halyard focus:outline-none focus:border-white transition-colors"
               />
               <input
@@ -82,6 +89,7 @@ const HeroSection = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                {...{ "mtn-capture": "", "mtn-field": "Email" }}
                 className="w-full bg-transparent border border-white/50 text-white placeholder:text-white/70 px-4 py-3 md:px-5 md:py-4 text-sm md:text-base font-halyard focus:outline-none focus:border-white transition-colors"
               />
 
