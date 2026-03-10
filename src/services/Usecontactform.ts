@@ -56,7 +56,7 @@ export function useContactForm(): UseContactFormReturn {
     data.append("email", formData.email);
 
     const request = new XMLHttpRequest();
-    request.open("POST", "rdstation.php");
+    request.open("POST", "https://www.cityurbanismo.com.br/rdstation.php");
 
     request.addEventListener("load", () => {
       showFeedback("Formulário enviado com sucesso!");
