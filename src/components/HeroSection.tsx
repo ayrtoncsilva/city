@@ -64,9 +64,9 @@ const HeroSection = () => {
             >
               <input
                 type="text"
-                name="nome"
+                name="name"
                 placeholder="Nome completo"
-                value={formData.nome}
+                value={formData.name}
                 onChange={handleChange}
                 required
                 {...{ "mtn-capture": "", "mtn-field": "Name" }}
@@ -74,9 +74,9 @@ const HeroSection = () => {
               />
               <input
                 type="tel"
-                name="celular"
+                name="personal_phone"
                 placeholder="Celular"
-                value={formData.celular}
+                value={formData.personal_phone}
                 onChange={handleChange}
                 required
                 {...{ "mtn-capture": "", "mtn-field": "Phone" }}

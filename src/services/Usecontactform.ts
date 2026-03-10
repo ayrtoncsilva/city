@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 interface FormData {
-  nome: string;
-  celular: string;
+  name: string;
+  personal_phone: string;
   email: string;
 }
 
@@ -15,8 +15,8 @@ interface UseContactFormReturn {
 
 export function useContactForm(): UseContactFormReturn {
   const [formData, setFormData] = useState<FormData>({
-    nome: "",
-    celular: "",
+    name: "",
+    personal_phone: "",
     email: "",
   });
 
@@ -49,25 +49,25 @@ export function useContactForm(): UseContactFormReturn {
       );
     }
 
-    // Monta FormData com os campos do estado
-    const data = new FormData();
-    data.append("nome", formData.nome);
-    data.append("celular", formData.celular);
-    data.append("email", formData.email);
-
+    // Envia para a API Route da Vercel (evita CORS)
     const request = new XMLHttpRequest();
-    request.open("POST", "https://www.cityurbanismo.com.br/rdstation.php");
+    request.open("POST", "/api/rdstation");
+    request.setRequestHeader("Content-Type", "application/json");
 
     request.addEventListener("load", () => {
       showFeedback("Formulário enviado com sucesso!");
-      setFormData({ nome: "", celular: "", email: "" });
+      setFormData({ name: "", personal_phone: "", email: "" });
     });
 
     request.addEventListener("error", () => {
       showFeedback("Não foi possível enviar. Tente novamente.");
     });
 
-    request.send(data);
+    request.send(JSON.stringify({
+      name: formData.name,
+      personal_phone: formData.personal_phone,
+      email: formData.email,
+    }));
   };
 
   return {
