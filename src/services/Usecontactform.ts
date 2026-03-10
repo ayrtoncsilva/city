@@ -10,7 +10,19 @@ interface UseContactFormReturn {
   formData: FormData;
   feedback: string | null;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePhoneChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
+}
+
+function formatPhone(value: string): string {
+  // Remove tudo que não é número
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 11)
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  return value;
 }
 
 export function useContactForm(): UseContactFormReturn {
@@ -30,6 +42,11 @@ export function useContactForm(): UseContactFormReturn {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setFormData((prev) => ({ ...prev, personal_phone: formatted }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -63,17 +80,20 @@ export function useContactForm(): UseContactFormReturn {
       showFeedback("Não foi possível enviar. Tente novamente.");
     });
 
-    request.send(JSON.stringify({
-      name: formData.name,
-      personal_phone: formData.personal_phone,
-      email: formData.email,
-    }));
+    request.send(
+      JSON.stringify({
+        name: formData.name,
+        personal_phone: formData.personal_phone,
+        email: formData.email,
+      })
+    );
   };
 
   return {
     formData,
     feedback,
     handleChange,
+    handlePhoneChange,
     handleSubmit,
   };
 }

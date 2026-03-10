@@ -6,7 +6,8 @@ import logoCitageMobile from "@/assets/logomobile.png";
 import { useContactForm } from "@/services/Usecontactform";
 
 const HeroSection = () => {
-  const { formData, feedback, handleChange, handleSubmit } = useContactForm();
+  const { formData, feedback, handleChange, handlePhoneChange, handleSubmit } =
+    useContactForm();
 
   return (
     <section className="min-h-screen flex flex-col">
@@ -72,16 +73,21 @@ const HeroSection = () => {
                 {...{ "mtn-capture": "", "mtn-field": "Name" }}
                 className="w-full bg-transparent border border-white/50 text-white placeholder:text-white/70 px-4 py-3 md:px-5 md:py-4 text-sm md:text-lg font-halyard focus:outline-none focus:border-white transition-colors"
               />
+
+              {/* Telefone com máscara (99) 99999-9999 — máx 11 dígitos */}
               <input
                 type="tel"
                 name="personal_phone"
-                placeholder="Celular"
+                placeholder="(00) 00000-0000"
                 value={formData.personal_phone}
-                onChange={handleChange}
+                onChange={handlePhoneChange}
                 required
+                minLength={14}
+                maxLength={15}
                 {...{ "mtn-capture": "", "mtn-field": "Phone" }}
                 className="w-full bg-transparent border border-white/50 text-white placeholder:text-white/70 px-4 py-3 md:px-5 md:py-4 text-sm md:text-base font-halyard focus:outline-none focus:border-white transition-colors"
               />
+
               <input
                 type="email"
                 name="email"
