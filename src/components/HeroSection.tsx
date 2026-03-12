@@ -29,7 +29,7 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-black/10" />
         </div>
 
-        <div className="relative z-10 w-full md:px-20 flex flex-col md:flex-row items-center md:justify-center md:gap-24 lg:gap-40">
+        <div className="relative z-10 w-full md:px-20 flex flex-col md:flex-row items-center md:justify-center md:gap-24 lg:gap-60">
           {/* LOGO DESKTOP */}
           <div className="hidden md:flex flex-shrink-0 justify-center items-center">
             <img
