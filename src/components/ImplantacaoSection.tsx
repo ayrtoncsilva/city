@@ -31,11 +31,7 @@ const amenities = [
 
 const ImplantacaoSection = () => (
   <section className="section-transition py-16 md:py-28" data-observe="section">
-
-    {/* MOBILE */}
     <div className="md:hidden flex flex-col">
-
-      {/* Título */}
       <div className="mb-8 px-6 flex justify-center">
         <div className="inline-block bg-neutral-800 px-6 py-3">
           <h2 className="font-halyard text-white text-2xl tracking-[0.25em] uppercase font-light">
@@ -44,14 +40,12 @@ const ImplantacaoSection = () => (
         </div>
       </div>
 
-      {/* Mapa mobile */}
       <img
         src={ImplantacaoMobile}
         alt="Implantação geral do empreendimento"
         className="w-full h-auto"
       />
 
-      {/* Legenda mobile */}
       <div className="mt-8 px-6">
         <div className="space-y-3 text-[12px] leading-relaxed text-neutral-800 font-halyard">
           {amenities.map((a) => (
@@ -68,10 +62,7 @@ const ImplantacaoSection = () => (
 
     </div>
 
-    {/* DESKTOP */}
     <div className="hidden md:flex flex-row items-start">
-
-      {/* esquerda */}
       <div className="w-[60%] pl-16 pr-8">
 
         <div className="mb-12 text-left">
@@ -90,7 +81,6 @@ const ImplantacaoSection = () => (
 
       </div>
 
-      {/* direita */}
       <div className="w-[40%] mt-28 pl-8 pr-16">
 
         <div className="space-y-3 text-[13px] leading-relaxed text-neutral-800 font-halyard">

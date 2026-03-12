@@ -133,33 +133,27 @@ const GallerySection = () => {
           loading="lazy"
         />
 
-        {/* LABEL DESKTOP — canto inferior direito, grande */}
-        <div
-          className="hidden md:block absolute bottom-8 right-8 text-white font-rolide tracking-widest"
-          style={{ fontSize: "32px" }}
-        >
-          {images[current].label}
+        <div className="hidden md:flex absolute bottom-8 right-8 items-end">
+          <span className="text-white font-rolide tracking-widest leading-none text-[32px]">
+            {images[current].label}
+          </span>
         </div>
 
-        {/* LABEL MOBILE — canto superior direito, menor */}
         <div className="md:hidden absolute top-4 right-4 text-white font-rolide tracking-widest text-base">
           {images[current].label}
         </div>
 
-        {/* DOTS */}
         <div className="absolute bottom-8 left-8 flex items-center gap-2">
           {images.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-3 h-3 rounded-full border border-white transition-all ${
-                i === current ? "bg-white" : "bg-transparent"
-              }`}
+              className={`w-3 h-3 rounded-full border border-white transition-all ${i === current ? "bg-white" : "bg-transparent"
+                }`}
             />
           ))}
         </div>
 
-        {/* SETAS */}
         <button
           onClick={() => setCurrent((c) => (c - 1 + images.length) % images.length)}
           className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"

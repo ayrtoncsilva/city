@@ -26,7 +26,6 @@ const FooterSection = () => (
         />
       </div>
 
-      {/* redes apenas desktop */}
       <div className="hidden md:grid grid-cols-2 gap-x-16 gap-y-6">
         {socialLinks.map(({ href, icon, label, text }) => (
           <a

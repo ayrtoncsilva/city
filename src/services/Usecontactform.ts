@@ -15,7 +15,6 @@ interface UseContactFormReturn {
 }
 
 function formatPhone(value: string): string {
-  // Remove tudo que não é número
   const digits = value.replace(/\D/g, "").slice(0, 11);
 
   if (digits.length <= 2) return `(${digits}`;
@@ -52,7 +51,6 @@ export function useContactForm(): UseContactFormReturn {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Envio paralelo para MtnStudio (CRM Hypnobox)
     if (
       typeof (window as any).MtnStudio !== "undefined" &&
       (window as any).MtnStudio.sendLead
@@ -66,7 +64,6 @@ export function useContactForm(): UseContactFormReturn {
       );
     }
 
-    // Envia para a API Route da Vercel (evita CORS)
     const request = new XMLHttpRequest();
     request.open("POST", "/api/rdstation");
     request.setRequestHeader("Content-Type", "application/json");

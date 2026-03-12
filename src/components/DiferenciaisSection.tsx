@@ -55,10 +55,8 @@ const DiferenciaisSection = () => {
       style={{ backgroundImage: `url(${leafBg})` }}
       data-observe="section"
     >
-      {/* overlay */}
       <div className="absolute inset-0 bg-black/10" />
 
-      {/* ── DESKTOP ── */}
       <div className="hidden md:flex relative z-10 items-center justify-center min-h-[420px] px-20 py-24">
         <div className="w-full max-w-5xl flex justify-end">
           <div className="w-full max-w-xl text-left">
@@ -92,7 +90,6 @@ const DiferenciaisSection = () => {
           </div>
         </div>
 
-        {/* Botão seta — desktop */}
         <button
           type="button"
           onClick={() => desktopApi?.scrollNext()}
@@ -102,7 +99,6 @@ const DiferenciaisSection = () => {
         </button>
       </div>
 
-      {/* ── MOBILE ── */}
       <div className="md:hidden relative z-10 px-6 pt-12 pb-20 min-h-[320px]">
         <Carousel
           opts={{ align: "start", loop: true }}
@@ -132,7 +128,6 @@ const DiferenciaisSection = () => {
           </CarouselContent>
         </Carousel>
 
-        {/* Botão seta — mobile */}
         <button
           type="button"
           onClick={() => mobileApi?.scrollNext()}

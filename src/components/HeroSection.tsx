@@ -11,9 +11,7 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex flex-col">
-      {/* HERO PRINCIPAL */}
       <div className="relative flex-1 flex items-center justify-center">
-        {/* BG DESKTOP */}
         <div
           className="absolute inset-0 bg-cover bg-center hidden md:block"
           style={{ backgroundImage: `url(${heroBg})` }}
@@ -21,7 +19,6 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-black/10" />
         </div>
 
-        {/* BG MOBILE */}
         <div
           className="absolute inset-0 bg-cover bg-center block md:hidden"
           style={{ backgroundImage: `url(${heroBgMobile})` }}
@@ -29,8 +26,7 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-black/10" />
         </div>
 
-        <div className="relative z-10 w-full md:px-20 flex flex-col md:flex-row items-center md:justify-center md:gap-24 lg:gap-40">
-          {/* LOGO DESKTOP */}
+        <div className="relative z-10 w-full md:px-20 flex flex-col md:flex-row items-center md:justify-center md:gap-24 lg:gap-60">
           <div className="hidden md:flex flex-shrink-0 justify-center items-center">
             <img
               src={logoCitage}
@@ -39,7 +35,6 @@ const HeroSection = () => {
             />
           </div>
 
-          {/* LOGO MOBILE */}
           <div className="flex md:hidden justify-center items-center pt-24 pb-16">
             <img
               src={logoCitageMobile}
@@ -48,12 +43,10 @@ const HeroSection = () => {
             />
           </div>
 
-          {/* FORM */}
           <div
             className="w-full max-w-[340px] md:max-w-none md:w-[380px] lg:w-[420px] border border-white/40 px-8 py-8 md:px-10 md:py-10"
             style={{ background: "rgba(180, 155, 110, 0.45)", backdropFilter: "blur(12px)" }}
           >
-            {/* Título */}
             <div className="w-fit mb-7">
               <h2 className="font-rolide text-base md:text-lg tracking-[0.5em] text-white mb-3 font-light">
                 SAIBA MAIS
@@ -102,12 +95,10 @@ const HeroSection = () => {
                 className="w-full bg-white/10 border border-white/40 text-white placeholder:text-white/80 px-4 py-2.5 text-sm font-halyard focus:outline-none focus:border-white transition-colors"
               />
 
-              {/* Feedback inline */}
               {feedback && (
                 <p className="text-white/90 text-xs font-halyard pt-1">{feedback}</p>
               )}
 
-              {/* Botão centralizado e compacto como no protótipo */}
               <div className="pt-2 flex justify-center">
                 <button
                   type="submit"
@@ -121,7 +112,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* RODAPÉ */}
       <div
         className="relative h-[50px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg2})` }}

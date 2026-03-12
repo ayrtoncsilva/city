@@ -4,8 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Halyard Text: fonte comercial. Fallback Source Serif 4 até adicionar arquivos da Halyard. */
-/* Rolide: para usar a fonte Rolide, baixe em fontspace.com/rolide-font-f107086 ou befonts.com e coloque em public/fonts */
 @font-face {
   font-family: 'Rolide';
   font-style: normal;
@@ -115,7 +113,6 @@
   }
 }
 
-/* Transição suave entre sections ao rolar a página */
 .section-transition {
   opacity: 0;
   transform: translateY(32px);

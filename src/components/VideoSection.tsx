@@ -25,7 +25,6 @@ const VideoSection = () => {
         </div>
       </section>
 
-      {/* MODAL */}
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 md:px-8"
@@ -35,7 +34,6 @@ const VideoSection = () => {
             className="relative w-full max-w-4xl rounded-lg overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botão fechar */}
             <button
               onClick={() => setOpen(false)}
               className="absolute top-3 right-3 z-10 text-white/80 hover:text-white transition-colors"
@@ -43,7 +41,6 @@ const VideoSection = () => {
               <X size={28} />
             </button>
 
-            {/* Player YouTube — aspect ratio 16:9 */}
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
               <iframe
                 className="absolute inset-0 w-full h-full"

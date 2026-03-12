@@ -5,7 +5,6 @@ const IntroSection = () => (
     className="section-transition bg-city-cream py-20 md:py-28 px-6 md:px-12"
     data-observe="section"
   >
-    {/* MOBILE: símbolo em cima, textos abaixo */}
     <div className="flex flex-col items-center md:hidden gap-8">
       <img src={simbolo} alt="Simbolo" className="w-24" />
       <p className="text-lg leading-relaxed font-halyard text-foreground text-left">
@@ -20,7 +19,6 @@ const IntroSection = () => (
       </p>
     </div>
 
-    {/* DESKTOP: grid 3 colunas original */}
     <div className="hidden md:grid max-w-6xl mx-auto grid-cols-3 gap-16 items-center">
       <div className="flex justify-end">
         <p className="max-w-sm text-xl md:text-2xl leading-relaxed font-halyard text-foreground">

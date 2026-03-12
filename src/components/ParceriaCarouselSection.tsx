@@ -51,7 +51,6 @@ const ParceriaCarouselSection = ({
       data-observe="section"
     >
       <div className="pl-6 md:pl-20 pr-6 md:pr-10">
-        {/* MOBILE HEADER */}
         <div className="md:hidden mb-12">
           <div className="grid grid-cols-2 gap-6 mb-8">
             <img src={partnersBg} className="w-full object-cover" />
@@ -66,7 +65,6 @@ const ParceriaCarouselSection = ({
             nasce um novo padrão de excelência em incorporação.
           </p>
         </div>
-        {/* DESKTOP BLOCO ORIGINAL */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 md:gap-40 gap-24 mb-24 items-start">
           <div className="flex flex-col gap-24">
             <div className="grid grid-cols-2 gap-24">
@@ -87,7 +85,6 @@ const ParceriaCarouselSection = ({
             </p>
           </div>
         </div>
-        {/* MOBILE CAROUSEL */}
         <div className="md:hidden mb-10">
           <Carousel opts={{ align: "start", loop: true }} setApi={setApi}>
             <CarouselContent>
@@ -99,7 +96,6 @@ const ParceriaCarouselSection = ({
             </CarouselContent>
           </Carousel>
         </div>
-        {/* DESKTOP CAROUSEL */}
         <div className="hidden md:block">
           <Carousel
             opts={{ align: "start", loop: true }}
@@ -110,16 +106,13 @@ const ParceriaCarouselSection = ({
               {slides.map((slide, index) => (
                 <CarouselItem key={index}>
                   <div className="grid grid-cols-[1.8fr_0.9fr] gap-12">
-                    {/* Imagem principal */}
                     <div className="aspect-[16/9] overflow-hidden">
                       <img
                         src={slide.mainImage}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    {/* Coluna direita: flex col, conteúdo empurrado para baixo */}
                     <div className="flex flex-col justify-end items-center pl-12">
-                      {/* Título alinhado junto à borda da foto */}
                       <div className="flex flex-col items-center mb-5 w-full mr-28">
                         <span className="font-rolide text-white/70 text-xs tracking-[0.2em] uppercase mb-1">
                           {slide.label}
@@ -133,7 +126,6 @@ const ParceriaCarouselSection = ({
                           <img src={slide.logo} className="h-[40px] object-contain" />
                         )}
                       </div>
-                      {/* Foto */}
                       {slide.personImage && (
                         <div className="overflow-hidden w-full">
                           <img
@@ -142,7 +134,6 @@ const ParceriaCarouselSection = ({
                           />
                         </div>
                       )}
-                      {/* Setas com espaço abaixo da foto */}
                       <div className="flex gap-2 mt-6 w-full">
                         <button
                           onClick={() => api?.scrollPrev()}
