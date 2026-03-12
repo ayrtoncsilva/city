@@ -134,11 +134,10 @@ const GallerySection = () => {
         />
 
         {/* LABEL DESKTOP — canto inferior direito, grande */}
-        <div
-          className="hidden md:block absolute bottom-8 right-8 text-white font-rolide tracking-widest"
-          style={{ fontSize: "32px" }}
-        >
-          {images[current].label}
+        <div className="hidden md:flex absolute bottom-8 right-8 items-end">
+          <span className="text-white font-rolide tracking-widest leading-none text-[32px]">
+            {images[current].label}
+          </span>
         </div>
 
         {/* LABEL MOBILE — canto superior direito, menor */}
@@ -152,9 +151,8 @@ const GallerySection = () => {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-3 h-3 rounded-full border border-white transition-all ${
-                i === current ? "bg-white" : "bg-transparent"
-              }`}
+              className={`w-3 h-3 rounded-full border border-white transition-all ${i === current ? "bg-white" : "bg-transparent"
+                }`}
             />
           ))}
         </div>
