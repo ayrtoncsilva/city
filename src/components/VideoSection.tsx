@@ -3,7 +3,6 @@ import { Play, X } from "lucide-react";
 
 const VideoSection = () => {
   const [open, setOpen] = useState(false);
-
   return (
     <>
       <section
