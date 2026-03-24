@@ -39,13 +39,17 @@ const HeroSection = () => {
         <div className="
           relative z-10
           w-full
-          md:px-20
+          px-5
+          md:px-24
+          lg:px-28
           flex
           flex-col
           md:flex-row
           items-center
           md:justify-center
-          md:gap-96
+          md:gap-32
+          lg:gap-40
+          xl:gap-48
         ">
           {/* LOGO DESKTOP */}
           <div className="hidden md:flex flex-shrink-0 justify-center items-center md:pl-25">
@@ -68,24 +72,27 @@ const HeroSection = () => {
           {/* FORM */}
           <div
             className="
+              mx-auto
               w-full
-              max-w-[340px]
-              md:max-w-none
-              md:w-[600px]
-              md:backdrop-blur-xl
+              max-w-[540px]
+              md:max-w-[500px]
+              md:w-full
+              shrink-0
               border
               border-white/50
+              bg-[#7A6C55]
               px-6 py-5
+              md:bg-[rgb(122_108_85/0.40)]
               md:p-10
-              md:bg-white/[0.01]
+              md:backdrop-blur-xl
             "
-            style={{ backgroundColor: "#7A6C55" }}
           >
-            <div className="w-fit mb-6 md:mb-10">
-              <h2 className="font-rolide text-xl md:text-3xl tracking-[0.4em] md:tracking-[0.6em] text-white mb-3 md:mb-4 font-light">
+            {/* pr compensa o letter-spacing após a última letra para a linha ir até o fim de "MAIS" */}
+            <div className="mb-6 w-max max-w-full pr-[0.4em] md:mb-10 md:pr-[0.6em]">
+              <h2 className="mb-3 font-rolide text-xl font-light tracking-[0.4em] text-white md:mb-4 md:text-3xl md:tracking-[0.6em]">
                 SAIBA MAIS
               </h2>
-              <div className="w-full h-px bg-white/50" />
+              <div className="h-px w-full bg-white/50" />
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
