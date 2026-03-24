@@ -5,6 +5,15 @@ import heroBg2 from "@/assets/FotoHeader2.png";
 import logoCitage from "@/assets/LogoCitage.png";
 import logoCitageMobile from "@/assets/logomobile.png";
 
+function formatCelularBr(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length === 0) return "";
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 7)
+    return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
 const HeroSection = () => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -107,10 +116,16 @@ const HeroSection = () => {
               />
               <input
                 type="tel"
-                placeholder="Celular"
+                inputMode="numeric"
+                autoComplete="tel-national"
+                placeholder="(00) 00000-0000"
                 value={formData.celular}
+                maxLength={15}
                 onChange={(e) =>
-                  setFormData({ ...formData, celular: e.target.value })
+                  setFormData({
+                    ...formData,
+                    celular: formatCelularBr(e.target.value),
+                  })
                 }
                 className="w-full bg-transparent border border-white/50 text-white placeholder:text-white/70 px-4 py-3 md:px-5 md:py-4 text-sm md:text-base font-halyard focus:outline-none focus:border-white transition-colors"
               />
