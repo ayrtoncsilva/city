@@ -1,5 +1,5 @@
 import ImplementacaoBolotario from "../assets/ImplementacaoBolotario.png";
-import ImplementacaoMobile from "../assets/implantacaoMobile.png";
+import ImplementacaoMobile from "../assets/implantacaomobile.png";
 
 const amenities = [
   { num: 1, name: "ÁREA COMERCIAL" },
